@@ -1,0 +1,5 @@
+The game client will most likely be developed in JavaScript supported with WebGL.
+Throughout development of the server, this client will be used primarily for testing purposes.
+
+For some reason, the JavaScript files will not run when you run index.html from the local computer.
+At the moment, the only solution is using UniServer and put the files in the www folder, then run Apache.
