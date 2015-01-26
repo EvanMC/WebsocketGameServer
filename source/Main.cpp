@@ -1,6 +1,3 @@
-//#include <iostream>
-//#include <string>
-//#include <boost\asio.hpp>
 #include "Server.h"
 
 const std::string version_number = "0.0.2";
