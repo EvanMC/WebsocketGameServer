@@ -19,7 +19,13 @@ class Connection : public std::enable_shared_from_this<Connection>
 	void readMessage();
 	void sendMessage(std::size_t);
 
+	boost::asio::streambuf streambuffer;
 	tcp::socket w_socket;
+
+	// Using string type for now
+	std::string w_data_s;
+
+	// Temporarily left out
 	enum { max_length = 1024 };
 	char w_data[max_length];
 };
