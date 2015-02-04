@@ -83,11 +83,15 @@
     <ClCompile Include="..\source\HandshakeHandler.cpp" />
     <ClCompile Include="..\source\Main.cpp" />
     <ClCompile Include="..\source\Server.cpp" />
+    <ClCompile Include="..\source\util\BASE64.cpp" />
+    <ClCompile Include="..\source\util\SHA1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Connection.h" />
     <ClInclude Include="..\source\HandshakeHandler.h" />
     <ClInclude Include="..\source\Server.h" />
+    <ClInclude Include="..\source\util\BASE64.h" />
+    <ClInclude Include="..\source\util\SHA1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

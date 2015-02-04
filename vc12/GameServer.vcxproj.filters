@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\Connection.cpp" />
+    <ClCompile Include="..\source\HandshakeHandler.cpp" />
+    <ClCompile Include="..\source\Main.cpp" />
+    <ClCompile Include="..\source\Server.cpp" />
+    <ClCompile Include="..\source\util\BASE64.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\util\SHA1.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\Connection.h" />
+    <ClInclude Include="..\source\HandshakeHandler.h" />
+    <ClInclude Include="..\source\Server.h" />
+    <ClInclude Include="..\source\util\BASE64.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\util\SHA1.h">
+      <Filter>util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="util">
+      <UniqueIdentifier>{3030b38c-d6be-4b7a-a478-98a2df354473}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

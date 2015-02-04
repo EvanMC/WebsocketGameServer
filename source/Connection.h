@@ -23,7 +23,7 @@ class Connection : public std::enable_shared_from_this<Connection>
 	tcp::socket w_socket;
 
 	// Using string type for now
-	std::string w_data_s;
+	std::string w_handshake_answer;
 
 	// Temporarily left out
 	enum { max_length = 1024 };

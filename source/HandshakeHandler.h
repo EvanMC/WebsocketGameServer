@@ -11,25 +11,39 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 class HandshakeHandler
 {
 	public:
-	HandshakeHandler();
+	// Constructor/Destructor
+	HandshakeHandler(std::string);
 	~HandshakeHandler();
 
-	std::string trim(std::string);
-	std::vector<std::string> explode(const std::string&, char);
+	void parseHandshake();
+	std::string answerHandshake();
 
 	private:
-	std::string resource;
+	// Utility functions
+	std::string trim(std::string);
+	std::vector<std::string> explode(const std::string&, std::string);
+	std::map<std::string, std::string> explode_http(const std::string&);
+	
+
+	// Main handshake string
+	std::string h_handshake;
+
+	// Captured information
+	std::string connection;
 	std::string host;
 	std::string origin;
-	std::string protocol;
+	std::string upgrade;
 	std::string key;
+	std::string encoded_key;
 
 	// DO NOT CHANGE - THIS IS A GLOBALLY UNIQUE IDENTIFIER THAT COMPLIES WITH RFC6455
 	const std::string handshake_guid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+	float minimumHttp = 1.1;
 };
 
 #endif

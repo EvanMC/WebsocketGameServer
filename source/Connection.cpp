@@ -1,4 +1,5 @@
 #include "Connection.h"
+#include "HandshakeHandler.h"
 
 Connection::Connection(tcp::socket socket) : w_socket(std::move(socket))
 {
@@ -8,16 +9,22 @@ Connection::Connection(tcp::socket socket) : w_socket(std::move(socket))
 void Connection::readMessage()
 {
 	auto self(shared_from_this());
-	boost::asio::async_read_until(w_socket, streambuffer, "\r\n\r\n",
+	w_socket.async_read_some(boost::asio::buffer(w_data, max_length),
 		[this, self](boost::system::error_code ec, std::size_t length)  // Lambda function
 		{
 			if (!ec)
 			{
-				std::istream is(&streambuffer);
-				std::getline(is, w_data_s);
+				// Initialize HandshakeHandler with incoming handshake message
+				HandshakeHandler newHandshake(w_data);
+				// Parse the incoming handshake message
+				newHandshake.parseHandshake(); 
+				// Store constructed answer into w_data_s
+				w_handshake_answer = newHandshake.answerHandshake(); 
 
-				std::cout << w_data_s << std::endl;
-				sendMessage(length);
+				std::cout << "Connection established!" << std::endl;
+
+				// Send the answer back to the client
+				sendMessage(w_handshake_answer.length());
 			}
 		});
 }
@@ -25,11 +32,12 @@ void Connection::readMessage()
 void Connection::sendMessage(std::size_t length)
 {
 	auto self(shared_from_this());
-	boost::asio::async_write(w_socket, boost::asio::buffer(w_data_s, length),
+	boost::asio::async_write(w_socket, boost::asio::buffer(w_handshake_answer, length),
 		[this, self](boost::system::error_code ec, std::size_t /*length*/)  // Lambda function
 		{
 			if (!ec)
 			{
+				// Listen for more messages
 				readMessage();
 			}
 		});

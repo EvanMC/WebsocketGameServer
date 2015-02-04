@@ -1,6 +1,8 @@
 #include "Server.h"
+#include "util/SHA1.h"
+#include "util/BASE64.h"
 
-const std::string version_number = "0.0.2";
+const std::string version_number = "0.0.3";
 
 int main()
 {
